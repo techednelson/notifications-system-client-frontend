@@ -1,0 +1,32 @@
+<main>
+  <mat-card>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <h2>Client B</h2>
+        <mat-error *ngIf="!isLoginValid" class="auth-error"> The username and password were not recognised</mat-error>
+        <mat-form-field appearance="outline">
+          <mat-label> Username</mat-label>
+          <input autocomplete="current-username" formControlName="username" matInput placeholder="Username" required/>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="loginForm.get('username').errors?.required">
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label> Password</mat-label>
+          <input
+            autocomplete="current-password"
+            formControlName="password"
+            matInput
+            placeholder="Password"
+            required
+            type="password"
+          />
+          <mat-icon matPrefix>vpn_key</mat-icon>
+          <mat-error *ngIf="loginForm.get('password').errors?.required"> Please provide a valid password</mat-error>
+        </mat-form-field>
+        <button mat-raised-button>Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</main>
